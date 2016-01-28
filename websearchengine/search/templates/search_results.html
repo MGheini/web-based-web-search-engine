@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Results</title>
+    {% load staticfiles %}
+    <link href="{% static "styles/bootstrap.min.css" %}" rel="stylesheet" />
+</head>
+<body style="background-color: #EDF8FF">
+    <div class="container" style="margin-top: 15px">
+        <div class="row">
+            <h2>Results</h2>
+            <div class="row">
+                <div class="col-md-3" style="border-width: 1px 1px 0px 0px; border-style: solid; border-color: #2A84B0">
+                    <h3>Clusters you may want to choose from:</h3>
+                    <form action="" method="post">
+                        <input type="checkbox" name="include" value="hi" style="margin-bottom: 10px" /> Cluster 1<br />
+                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 2<br />
+                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 3<br />
+                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 4<br />
+                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 5<br />
+                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 6<br />
+                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 7<br />
+                        <button type="submit" class="btn btn-primary" type="button" style="margin-top: 10px">Filter</button>
+                    </form>
+                </div>
+                <div class="col-md-9" style="border-width: 1px 0px 0px 0px; border-style: solid; border-color: #2A84B0">
+                    <h3>Results for query: {{ query }}</h3>
+                    {% for result in results %}
+                    <div class="row" style="margin: 0px 0px 10px 0px">
+                        <a href="http://www.researchgate.com/publication/{{ result.id }}">{{ result.title }}</a>
+                        <div class="row">
+                            <div class="col-md-3" style="height: 90px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">Cluster</div>
+                            <div class="col-md-3" style="height: 90px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">{{ result.score }}</div>
+                            <div class="col-md-3" style="height: 90px">PageRank</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
