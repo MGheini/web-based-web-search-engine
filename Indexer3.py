@@ -21,6 +21,9 @@ def index(path, titlew, abstractw, authorsw):
                 "citations": {
                     "type": "long"
                 },
+                "cluster": {
+                    "type": "string"
+                },
                 "id": {
                     "type": "long"
                 },

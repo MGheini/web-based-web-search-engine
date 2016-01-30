@@ -12,16 +12,20 @@
             <div class="row">
                 <div class="col-md-3" style="border-width: 1px 1px 0px 0px; border-style: solid; border-color: #2A84B0">
                     <h3>Clusters you may want to choose from:</h3>
+                    {% if clusters %}
                     <form action="" method="post">
-                        <input type="checkbox" name="include" value="hi" style="margin-bottom: 10px" /> Cluster 1<br />
-                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 2<br />
-                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 3<br />
-                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 4<br />
-                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 5<br />
-                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 6<br />
-                        <input type="checkbox" name="include" value="bye" style="margin-bottom: 10px" /> Cluster 7<br />
+                        {% csrf_token %}
+                        {% for cluster in clusters %}
+                        <input type="checkbox" name="include" value="{{ cluster.number }}" style="margin-bottom: 10px"
+                            {% if cluster.checked %}
+                                checked="true"
+                            {% endif %} /> {{ cluster.title|title }}<br />
+                        {% endfor %}
                         <button type="submit" class="btn btn-primary" type="button" style="margin-top: 10px">Filter</button>
                     </form>
+                    {% else %}
+                    <p>Not available in this version</p>
+                    {% endif %}
                 </div>
                 <div class="col-md-9" style="border-width: 1px 0px 0px 0px; border-style: solid; border-color: #2A84B0">
                     <h3>Results for query: {{ query }}</h3>
@@ -29,9 +33,9 @@
                     <div class="row" style="margin: 0px 0px 10px 0px">
                         <a href="http://www.researchgate.com/publication/{{ result.id }}">{{ result.title }}</a>
                         <div class="row">
-                            <div class="col-md-3" style="height: 90px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">{{ result.cluster }}</div>
-                            <div class="col-md-3" style="height: 90px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">{{ result.score }}</div>
-                            <div class="col-md-3" style="height: 90px">{{ result.PageRank }}</div>
+                            <div class="col-md-3" style="height: 25px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">{{ result.cluster|title }}</div>
+                            <div class="col-md-3" style="height: 25px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">{{ result.score }}</div>
+                            <div class="col-md-3" style="height: 25px">{{ result.PageRank }}</div>
                         </div>
                     </div>
                     {% endfor %}
