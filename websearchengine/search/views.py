@@ -103,4 +103,4 @@ def retrieve(request):
 
 clusters_labels = []
 f = open("C:\\Users\\Mozhdeh\\Documents\\GitHub\\web-based-web-search-engine\\Labels.txt").read().split('\n')
-clusters_labels = f[1:]
+clusters_labels = f[1:len(f) - 1]
