@@ -29,9 +29,9 @@
                     <div class="row" style="margin: 0px 0px 10px 0px">
                         <a href="http://www.researchgate.com/publication/{{ result.id }}">{{ result.title }}</a>
                         <div class="row">
-                            <div class="col-md-3" style="height: 90px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">Cluster</div>
+                            <div class="col-md-3" style="height: 90px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">{{ result.cluster }}</div>
                             <div class="col-md-3" style="height: 90px; border-width: 0px 1px 0px 0px; border-style: solid; border-color: #2A84B0">{{ result.score }}</div>
-                            <div class="col-md-3" style="height: 90px">PageRank</div>
+                            <div class="col-md-3" style="height: 90px">{{ result.PageRank }}</div>
                         </div>
                     </div>
                     {% endfor %}
